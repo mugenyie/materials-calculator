@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Material Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="getCatalogue()">
+<script>
+  let items_list = [
+	{
+		"id":"1a7036fa-3d94-4963-b2ba-beaa83e0eccd",
+		"quantity":"1120"
+	},
+	{
+		"id":"de74d3a8-f568-45dd-a92e-5b5e03fdc436",
+		"quantity":"200"
+	}
+]
+</script>
+  <div class="centered" id="material_loader_gif">
+    <img src="infinity-loader.svg" alt="">
+  </div>
+
+  <div id="material_form">
+    <div id="material_body""></div>
+    <input id="get_total_button" onclick="getTotalValue(items_list)" class="button" value="Calculate Total">
+  </div>
+
+  <script src="material_calculator.js"></script>
+  </body>
+</html>
