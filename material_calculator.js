@@ -1,9 +1,13 @@
 let material_body = document.getElementById('material_body');
 let material_form = document.getElementById('material_form');
 let get_total_button = document.getElementById('get_total_button');
+let get_catalogue_button = document.getElementById('get_catalogue_button');
 
 function getCatalogue(){
+    material_loader_gif.style.display = 'flex';
     material_form.style.display = 'none';
+    get_total_button.style.display = "block";
+    get_catalogue_button.style.display = 'none';
     let order_list = `
     <table class="materials">
     <tr>
@@ -35,13 +39,18 @@ function getCatalogue(){
         material_body.innerHTML = order_list + "</table>";
         material_loader_gif.style.display = 'none';
         material_form.style.display = 'block';
+        material_loader_gif.style.display = 'none';
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        console.log(err);
+        alert("Error Procesding Request, Try Again");
+    })
 }
 
 function getTotalValue(){
-    const items_list = getMaterialItems();
     material_loader_gif.style.display = 'flex';
+    const items_list = getMaterialItems();
+    get_catalogue_button.style.display = 'block';
     material_form.style.display = 'none';
     console.log(JSON.stringify(items_list))
     fetch('https://admin.tofaliafrica.com/api/materialsCalculator', {
@@ -58,9 +67,9 @@ function getTotalValue(){
         let cost_of_blocks = data.cost_of_blocks;
         let materials_break_down = data.materials_break_down;
         let production_break_down = data.production_break_down;
-        let total = parseFloat(data.total).toFixed(1);
+        let total = parseFloat(data.total).toFixed(0);
 
-        let calculatedItemBody = `<h1>Calculated Material Value: <strong>UGX ${total}</strong></h1>`;
+        let calculatedItemBody = `<h1>Calculated Material Value: <strong>UGX ${numberWithCommas(total)}</strong></h1>`;
 
         //cost_of_blocks
         calculatedItemBody += '<h4>Cost of blocks</h4>'+
@@ -75,9 +84,9 @@ function getTotalValue(){
             <td>${element.group}</td>
             <td>${parseFloat(element.units_per_bag_of_cement).toFixed(1)}</td>
             <td>${parseFloat(element.units_per_stone_dust_ton).toFixed(1)}</td>
-            <td>${parseFloat(element.quantity).toFixed(1)}</td>
-            <td>${parseFloat(element.unit_price).toFixed(1)}</td>
-            <td>${parseFloat(element.total_price).toFixed(1)}</td>
+            <td>${parseFloat(element.quantity).toFixed(0)}</td>
+            <td>${numberWithCommas(parseFloat(element.unit_price).toFixed(0))}</td>
+            <td>${numberWithCommas(parseFloat(element.total_price).toFixed(0))}</td>
             </tr>`
         });
         calculatedItemBody += '</table>';
@@ -91,8 +100,8 @@ function getTotalValue(){
             <td>${element.material}</td>
             <td>${element.unit}</td>
             <td>${element.quantity}</td>
-            <td>${element.unit_price}</td>
-            <td>${element.total_price}</td>
+            <td>${numberWithCommas(element.unit_price)}</td>
+            <td>${numberWithCommas(parseFloat(element.total_price).toFixed(0))}</td>
             </tr>`
         });
         calculatedItemBody += '</table>';
@@ -106,8 +115,8 @@ function getTotalValue(){
             <td>${element.production}</td>
             <td>${element.unit}</td>
             <td>${element.quantity}</td>
-            <td>${element.unit_price}</td>
-            <td>${element.total_price}</td>
+            <td>${numberWithCommas(element.unit_price)}</td>
+            <td>${numberWithCommas(element.total_price)}</td>
             </tr>`
         });
         calculatedItemBody += '</table>';
@@ -117,7 +126,10 @@ function getTotalValue(){
         get_total_button.style.display = 'none';
         material_form.style.display = 'block';
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+        console.log(err);
+        alert("Error Processing Request, Try Again");
+    });
 }
 
 function getMaterialItems(){
@@ -134,6 +146,6 @@ function getMaterialItems(){
     return item_list;
 }
 
-function filterInputs(element) {
-    return element.value.trim() != '0' || element.value.trim() != '';
-  }
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
