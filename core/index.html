@@ -1,0 +1,21 @@
+<!--https://mugenyie.github.io/materials-calculator/-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Material Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="getCatalogue()">
+  <div class="centered" id="material_loader_gif">
+    <img src="infinity-loader.svg" alt="">
+  </div>
+
+  <div id="material_form">
+    <div id="material_body""></div>
+    <input id="get_total_button" onclick="getTotalValue()" class="button" value="Calculate Total">
+    <input id="get_catalogue_button" onclick="getCatalogue()" class="button" value="<< Do Another">
+  </div>
+
+  <script src="material_calculator.js"></script>
+  </body>
+</html>

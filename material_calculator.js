@@ -9,31 +9,39 @@ function getCatalogue(){
     get_total_button.style.display = "block";
     get_catalogue_button.style.display = 'none';
     let order_list = `
-    <table class="materials">
-    <tr>
-        <th>Name</th>
-        <th>Desc</th>
-        <th>Type</th>
-        <th>IMG</th>
-        <th>Group</th>
-        <th>Cemment (Unit)</th>
-        <th>Stone Dust (Unit)</th>
-        <th>Quantity</th>
-    </tr>
+    <table class="table table-hover materials">
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>QUANTITY</th>
+            <th>MEASUREMENTS</th>
+        </tr>
+    </thead>
     `;
     fetch('https://admin.tofaliafrica.com/api/blockCatalog')
     .then((res) => res.json())
     .then(data => {
         data.forEach(element => {
-            order_list += `<tr>
-            <td>${element.name}</td>
-            <td>${element.description}</td>
-            <td>${element.type}</td>
-            <td>${element.imageUrl}</td>
-            <td>${element.group}</td>
-            <td>${parseFloat(element.units_per_bag_of_cement).toFixed(1)}</td>
-            <td>${parseFloat(element.units_per_stone_dust_ton).toFixed(1)}</td>
-            <td><input id="${element.id}" name="material_item" value="0"></td>
+            order_list += `
+            <tr>
+            <td class="td-center">
+                <img class="cell-img" src="https://admin.tofaliafrica.com/storage/${element.imageUrl}">
+                <br />
+                <strong>${element.name}</strong>
+            </td>
+            <td class="td-center">
+            <input type="number" class="form-control td-input" id="${element.id}" name="material_item" value="0">
+            <!--<div class="qty mt-5">
+                <span class="minus bg-dark">-</span>
+                <input id="${element.id}" type="number" class="count" name="qty" value="0">
+                <span class="plus bg-dark">+</span>
+            </div>-->
+            </td>
+            <td>
+            <strong>Cement Bag: </strong> ${parseFloat(element.units_per_bag_of_cement).toFixed(1)}
+            <br />
+            <strong>Stone dust: </strong> ${parseFloat(element.units_per_stone_dust_ton).toFixed(1)}
+            </td>
             </tr>`
         });
         material_body.innerHTML = order_list + "</table>";
@@ -80,7 +88,7 @@ function getTotalValue(){
             <td>${element.name}</td>
             <td>${element.description}</td>
             <td>${element.type}</td>
-            <td>${element.imageUrl}</td>
+            <td><img src="https://admin.tofaliafrica.com/storage/${element.imageUrl}"></td>
             <td>${element.group}</td>
             <td>${parseFloat(element.units_per_bag_of_cement).toFixed(1)}</td>
             <td>${parseFloat(element.units_per_stone_dust_ton).toFixed(1)}</td>

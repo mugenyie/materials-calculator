@@ -1,21 +1,307 @@
-<!--https://mugenyie.github.io/materials-calculator/-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    
+<!-- Mirrored from templateclan.com/demos/construction/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 May 2021 16:11:00 GMT -->
 <head>
-	<title>Material Calculator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body onload="getCatalogue()">
-  <div class="centered" id="material_loader_gif">
-    <img src="infinity-loader.svg" alt="">
-  </div>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Construction</title>
 
-  <div id="material_form">
-    <div id="material_body""></div>
-    <input id="get_total_button" onclick="getTotalValue()" class="button" value="Calculate Total">
-    <input id="get_catalogue_button" onclick="getCatalogue()" class="button" value="<< Do Another">
-  </div>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Neuton:400,200,300,400italic,700,800' rel='stylesheet' type='text/css'>
 
-  <script src="material_calculator.js"></script>
-  </body>
+        <link href="css/all.min.css" rel="stylesheet">
+
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <style>
+            .slider-caption
+            {
+                position: absolute;
+                bottom: 150px;
+                right: 150px;
+            }
+            h1.banner-content {
+                color: white;
+                text-align: center;
+            }
+            .get-quote {
+                text-align: center;
+            }
+            h4.banner-desc{
+                color: white;
+                text-align: center;
+            }
+            .material-est-button{
+                font-weight: bold;
+                font-size: 16px;
+            }
+        </style>
+
+        <!-- Wrapper-Start -->
+
+        <div class="wrapper">
+
+            <!-- Header-Start -->
+            <header class="header">
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="index.html"><img src="images/Logo.png" class="img-responsive" alt="" /></a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Portfolio</a></li>
+                                <li><a href="#">Contact Us</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <!-- Header-End -->
+
+            <!-- Banner-Section -->
+            <!-- <section class="banner-section full-height-section">
+                <div class="slide-content">
+                    <div class="coll-middle">
+                        <div class="inner">
+                            <div class="container">
+                                <h1 class="banner-content">Authoritatively scale intermandated bandwidth before.<br>Professionally team building</h1>
+                                <div class="get-quote">
+                                    <a href="#" class="btn btn-md btn-normal m-r-15 m-t-10">Get Quote</a>
+                                    <a href="#" class="btn btn-md btn-inverse btn-border m-t-10">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <!-- Carousel container -->
+<div id="my-pics" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+    <li data-target="#my-pics" data-slide-to="0" class="active"></li>
+    <li data-target="#my-pics" data-slide-to="1"></li>
+    <!-- <li data-target="#my-pics" data-slide-to="2"></li> -->
+    </ol>
+    
+    <!-- Content -->
+    <div class="carousel-inner" role="listbox">
+    
+    <!-- Slide 1 -->
+    <div class="item active">
+        <img src="images/banner.jpg" alt="">
+        <div class="inner slider-caption">
+            <div class="container">
+                <h1 class="banner-content">Welcome to Tofali Africa</h1>
+                <h4 class="banner-desc">Order for on-site block procurement for all your construction needs at your convinience.</h4>
+                <div class="get-quote">
+                    <a href="calculator.html" class="material-est-button btn btn-md btn-normal m-r-15 m-t-10">Go to Materials Estimator</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 2 -->
+    <div class="item">
+        <img src="images/banner.jpg" alt="">
+        <div class="inner slider-caption">
+            <div class="container">
+                <h1 class="banner-content">Save up to 20% with Tofali Africa</h1>
+                <h4 class="banner-desc">Make concrete blocks on-site with Tofali Africa. Save up to 20% and avoid getting cheated.</h4>
+                <div class="get-quote">
+                    <a href="calculator.html" class="material-est-button btn btn-md btn-normal m-r-15 m-t-10">Go to Materials Estimator</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <!-- Previous/Next controls -->
+    <a class="left carousel-control" href="#my-pics" role="button" data-slide="prev">
+    <span class="icon-prev" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#my-pics" role="button" data-slide="next">
+    <span class="icon-next" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+    </a>
+    
+    </div>
+            
+            <!-- Banner-Section-End -->
+
+            <!-- Service-Section -->
+            <section class="our-services">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>How It Works</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <div class="icon-box m-b-20 text-center">    
+                                <span class="icon m-b-20"><a href="#"><i class="fa fa-building-o" aria-hidden="true"></i></a></span>
+                                <div class="content">
+                                    <h4><a href="#">Estimate materials needed</a></h4>
+                                    <p>We provide you with a very simple tool to help you estimate how much material you might need for your project.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <div class="icon-box m-b-20 text-center">
+                                <span class="icon m-b-20"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></span>
+                                <div class="content">
+                                    <h4><a href="#">Get a quotation</a></h4>
+                                    <p>We generate a free draft quotation based on your material needs. We further support you to review plan for accurate quotation.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <div class="icon-box m-b-20 text-center">
+                              <span class="icon m-b-20"><a href="#"><i class="fa fa-industry" aria-hidden="true"></i></a></span>
+                                <div class="content">
+                                    <h4><a href="#">Kick off Project</a></h4>
+                                    <p>Tofali operators will inspect and execute your project and you will have all updates to show progress of your project. All this at your finger tips on your account.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Service-Section-End -->
+
+            <!-- Quote-Form-Section -->
+            <section class="quote-form">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Need more support</h2>
+                    </div>
+                    
+                    <div class="quote-form-entry">
+                      <p class="alert alert-dismissible fade in message" role="alert"></p>
+                      <form action="https://templateclan.com/demos/construction/quote-form-mail.php" method="post" class="form contact-form">
+                            <div class="row">     
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="first_name" placeholder="First Name" class="form-control">
+                                </div>  
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="last_name" placeholder="Last Name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">     
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="mobile" placeholder="Mobile" class="form-control">
+                                </div>  
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="phone" placeholder="Phone" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">     
+                                <div class="col-md-6 form-group">
+                                    <input type="email" name="email" placeholder="Email" class="form-control">
+                                </div>  
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="issue" placeholder="Issue" class="form-control">
+                                </div>
+                            </div>
+                            <textarea class="form-control" name="message" placeholder="Message" rows="3"></textarea>
+                            <div class="button text-center m-t-30">   
+                                <button class="btn btn-lg btn-normal sendBtn">Contact Us</button>       
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <!-- Quote-Form-End -->
+
+            <!-- Footer-Section -->
+            <footer id="footer">
+                <div class="widgetized-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                <div class="footer-widget">
+                                    <img src="images/Logo.png" class="m-b-20" alt="" />
+                                    <p>Monotonectally recaptiualize end-to-end materials before B2C e-commerce.
+                                        Assertively initiate value-added infrastructures via functionalized users. 
+                                        Efficiently whiteboard ubiquitous best practices through adaptive paradigms.
+                                        Continually revolutionize.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                <div class="footer-widget">
+                                    <div class="title latest-project-title">
+                                        <h3 class="widget-title">Get In Touch</h3><span></span>
+                                    </div>
+                                    <ul class="menu-links">
+                                        <li class="address">Address: 15 Design Street, Melbourne<br>Australia 54214</li>
+                                        <li>Phone: +1-541-754-3010</li>
+                                        <li>Email: <a href="#">info@construction.com</a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                <div class="footer-widget">
+                                    <div class="title latest-project-title">
+                                        <h3 class="widget-title">Newsletter</h3><span></span>
+                                    </div>
+
+                                    <p>Signup your newsletter</p>
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-sm btn-rounded btn-normal" type="submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-footer">
+                    <div class="container">
+                        <ul class="m-b-10  text-center">    
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="blog.html">Blog</a></li>   
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+
+                        </ul>   
+                        <p class="text-center">&copy; 2016 Tofali. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer-Section-End -->
+
+        </div>
+        <!-- Wrapper-End -->
+
+        <!-- Script -->
+        <script src="js/all.min.js"></script>
+
+    </body>
+
 </html>

@@ -1,9 +1,7 @@
 .materials {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
   }
-  
   .materials td, #materials th {
     border: 1px solid #ddd;
     padding: 8px;
@@ -44,4 +42,16 @@
 
 #material_loader_gif{
     z-index: 10;
+  }
+  
+  .cell-img{
+    width: 80px;
+    margin-right: 20px;
+  }
+
+  .td-center{
+    text-align:center;
+  }
+  .td-input{
+    width: 100px;
   }
