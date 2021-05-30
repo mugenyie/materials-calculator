@@ -76,7 +76,7 @@ function getTotalValue(){
         let production_break_down = data.production_break_down;
         let total = parseFloat(data.total).toFixed(0);
 
-        let calculatedItemBody = `<h4>Calculated Material Value: <strong style="border-bottom: 1px dotted #000;">UGX ${numberWithCommas(total)}/=</strong></h4>`;
+        let calculatedItemBody = `<h4>Total Estimated Cost: <strong style="border-bottom: 1px dotted #000;">UGX ${numberWithCommas(total)}/=</strong></h4>`;
 
         //cost_of_blocks
         calculatedItemBody += '<div class="table-area table-responsive"><span class="table-heading">Cost of blocks</span>'+
