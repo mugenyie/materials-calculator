@@ -57,9 +57,9 @@
 
             <!-- Banner-Section -->
             <section class="page-header">
-                <div class="overlay">
+                <div style="padding: 100px 0px 20px 0px;" class="overlay">
                     <div class="container">
-                        <h1 class="page-title m-b-10">Materials Calculator</h1>
+                        <!-- <h1 class="page-title m-b-10">Materials Calculator</h1> -->
                         <p>On site Block Materials Estimator</p>
                     </div>
                 </div>
@@ -73,16 +73,18 @@
 				</div>
 			
 				<div class="row">
-					<div class="col-md-2"></div>
+					<div class="col-md-1"></div>
 					<div class="col-md-8">
 						<div id="material_form">
 						<div id="material_body"></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<input id="get_total_button" onclick="getTotalValue()" class="button" value="Calculate Total">
-						<input id="get_catalogue_button" onclick="getCatalogue()" class="button" value="<< Do Another">
+						<input type="button" id="get_total_button" onclick="getTotalValue()" class="btn btn-md btn-normal" value="Calculate Total">
+						<input type="button" id="get_catalogue_button" onclick="getCatalogue()" class="btn btn-md btn-normal" value="👈 Do Another">
+                        <input type="button" id="generate_pdf_button" onclick="generateEstimatePDF()" class="btn btn-md btn-normal" value="Send to self">
 					</div>
+                    <div class="col-md-1"></div>
 				</div>
             </section>
             <!-- Page-Container-End -->

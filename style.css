@@ -55,3 +55,22 @@
   .td-input{
     width: 100px;
   }
+
+  input#generate_pdf_button {
+    margin-top: 20px;
+}
+
+input.btn {
+  width: 200px;
+}
+
+.table-heading{
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.table-area{
+  padding-top: 20px;
+  padding-bottom: 40px;
+}

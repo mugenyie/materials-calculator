@@ -2,8 +2,11 @@ let material_body = document.getElementById('material_body');
 let material_form = document.getElementById('material_form');
 let get_total_button = document.getElementById('get_total_button');
 let get_catalogue_button = document.getElementById('get_catalogue_button');
+let generate_pdf_button = document.getElementById('generate_pdf_button');
+generate_pdf_button.style.display = 'none';
 
 function getCatalogue(){
+    generate_pdf_button.style.display = 'none';
     material_loader_gif.style.display = 'flex';
     material_form.style.display = 'none';
     get_total_button.style.display = "block";
@@ -12,7 +15,7 @@ function getCatalogue(){
     <table class="table table-hover materials">
     <thead>
         <tr>
-            <th>NAME</th>
+            <th>Description</th>
             <th>QUANTITY</th>
             <th>MEASUREMENTS</th>
         </tr>
@@ -27,15 +30,10 @@ function getCatalogue(){
             <td class="td-center">
                 <img class="cell-img" src="https://admin.tofaliafrica.com/storage/${element.imageUrl}">
                 <br />
-                <strong>${element.name}</strong>
+                <strong>${element.description}</strong>
             </td>
             <td class="td-center">
             <input type="number" class="form-control td-input" id="${element.id}" name="material_item" value="0">
-            <!--<div class="qty mt-5">
-                <span class="minus bg-dark">-</span>
-                <input id="${element.id}" type="number" class="count" name="qty" value="0">
-                <span class="plus bg-dark">+</span>
-            </div>-->
             </td>
             <td>
             <strong>Cement Bag: </strong> ${parseFloat(element.units_per_bag_of_cement).toFixed(1)}
@@ -59,6 +57,7 @@ function getTotalValue(){
     material_loader_gif.style.display = 'flex';
     const items_list = getMaterialItems();
     get_catalogue_button.style.display = 'block';
+    generate_pdf_button.style.display = 'block';
     material_form.style.display = 'none';
     console.log(JSON.stringify(items_list))
     fetch('https://admin.tofaliafrica.com/api/materialsCalculator', {
@@ -77,31 +76,34 @@ function getTotalValue(){
         let production_break_down = data.production_break_down;
         let total = parseFloat(data.total).toFixed(0);
 
-        let calculatedItemBody = `<h1>Calculated Material Value: <strong>UGX ${numberWithCommas(total)}</strong></h1>`;
+        let calculatedItemBody = `<h4>Calculated Material Value: <strong style="border-bottom: 1px dotted #000;">UGX ${numberWithCommas(total)}/=</strong></h4>`;
 
         //cost_of_blocks
-        calculatedItemBody += '<h4>Cost of blocks</h4>'+
-        '<table class="materials">'+
-        '<tr><th>Name</th><th>Desc</th><th>Type</th><th>IMG</th><th>Group</th><th>Cemment (Unit)</th><th>Stone Dust (Unit)</th><th>Quantity</th><th>Unit Price</th><th>Total</th></tr>';
+        calculatedItemBody += '<div class="table-area"><span class="table-heading">Cost of blocks</span>'+
+        '<table class="table table-hover materials">'+
+        '<tr><th>Description</th><th>Measurements</th><th>Quantity</th><th>Unit Price</th><th>Total</th></tr>';
         cost_of_blocks.forEach(element => {
             calculatedItemBody += `<tr>
-            <td>${element.name}</td>
-            <td>${element.description}</td>
-            <td>${element.type}</td>
-            <td><img src="https://admin.tofaliafrica.com/storage/${element.imageUrl}"></td>
-            <td>${element.group}</td>
-            <td>${parseFloat(element.units_per_bag_of_cement).toFixed(1)}</td>
-            <td>${parseFloat(element.units_per_stone_dust_ton).toFixed(1)}</td>
+            <td class="td-center">
+                <img class="cell-img" src="https://admin.tofaliafrica.com/storage/${element.imageUrl}">
+                <br />
+                <strong>${element.description}</strong>
+            </td>
+            <td>
+            <strong>Cement Bag: </strong> ${parseFloat(element.units_per_bag_of_cement).toFixed(1)}
+            <br />
+            <strong>Stone dust: </strong> ${parseFloat(element.units_per_stone_dust_ton).toFixed(1)}
+            </td>
             <td>${parseFloat(element.quantity).toFixed(0)}</td>
             <td>${numberWithCommas(parseFloat(element.unit_price).toFixed(0))}</td>
             <td>${numberWithCommas(parseFloat(element.total_price).toFixed(0))}</td>
             </tr>`
         });
-        calculatedItemBody += '</table>';
+        calculatedItemBody += '</table></div>';
 
         //materials_break_down
-        calculatedItemBody += `<h4>Material Breakdown</h4>
-        <table class="materials">
+        calculatedItemBody += `<div class="table-area"><span class="table-heading">Material Breakdown</span>
+        <table class="table table-hover materials">
         <tr><th>Material</th><th>Unit</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th></tr>`;
         materials_break_down.forEach(element => {
             calculatedItemBody += `<tr>
@@ -112,11 +114,11 @@ function getTotalValue(){
             <td>${numberWithCommas(parseFloat(element.total_price).toFixed(0))}</td>
             </tr>`
         });
-        calculatedItemBody += '</table>';
+        calculatedItemBody += '</table></div>';
 
         //production_break_down
-        calculatedItemBody += `<h4>Production Breakdown</h4>
-        <table class="materials">
+        calculatedItemBody += `<div class="table-area"><span class="table-heading">Production Breakdown</span>
+        <table class="table table-hover materials">
         <tr><th>Production</th><th>Unit</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th></tr>`;
         production_break_down.forEach(element => {
             calculatedItemBody += `<tr>
@@ -127,7 +129,7 @@ function getTotalValue(){
             <td>${numberWithCommas(element.total_price)}</td>
             </tr>`
         });
-        calculatedItemBody += '</table>';
+        calculatedItemBody += '</table></div>';
         
         material_body.innerHTML = calculatedItemBody;
         material_loader_gif.style.display = 'none';
