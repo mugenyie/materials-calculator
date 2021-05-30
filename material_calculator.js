@@ -79,7 +79,7 @@ function getTotalValue(){
         let calculatedItemBody = `<h4>Calculated Material Value: <strong style="border-bottom: 1px dotted #000;">UGX ${numberWithCommas(total)}/=</strong></h4>`;
 
         //cost_of_blocks
-        calculatedItemBody += '<div class="table-area"><span class="table-heading">Cost of blocks</span>'+
+        calculatedItemBody += '<div class="table-area table-responsive"><span class="table-heading">Cost of blocks</span>'+
         '<table class="table table-hover materials">'+
         '<tr><th>Description</th><th>Measurements</th><th>Quantity</th><th>Unit Price</th><th>Total</th></tr>';
         cost_of_blocks.forEach(element => {
@@ -102,7 +102,7 @@ function getTotalValue(){
         calculatedItemBody += '</table></div>';
 
         //materials_break_down
-        calculatedItemBody += `<div class="table-area"><span class="table-heading">Material Breakdown</span>
+        calculatedItemBody += `<div class="table-area table-responsive"><span class="table-heading">Material Breakdown</span>
         <table class="table table-hover materials">
         <tr><th>Material</th><th>Unit</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th></tr>`;
         materials_break_down.forEach(element => {
@@ -117,7 +117,7 @@ function getTotalValue(){
         calculatedItemBody += '</table></div>';
 
         //production_break_down
-        calculatedItemBody += `<div class="table-area"><span class="table-heading">Production Breakdown</span>
+        calculatedItemBody += `<div class="table-area table-responsive"><span class="table-heading">Production Breakdown</span>
         <table class="table table-hover materials">
         <tr><th>Production</th><th>Unit</th><th>Quantity</th><th>Unit Price</th><th>Total Price</th></tr>`;
         production_break_down.forEach(element => {
