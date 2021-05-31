@@ -78,3 +78,11 @@ input.btn {
   padding-top: 20px;
   padding-bottom: 40px;
 }
+
+img.img-responsive.top-logo{
+  height: 40px;
+}
+
+img.m-b-20 {
+  width: 300px;
+}
