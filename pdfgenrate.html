@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from templateclan.com/demos/construction/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 May 2021 16:12:15 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generate PDF</title>
+</head>
+<body>
+
+    <div>
+        <button onclick="convert_HTML_To_PDF();">Convert HTML to PDF</button>
+        
+        <!-- HTML content for PDF creation -->
+        <div id="PDFContent">
+            <h1>What is Lorem Ipsum?</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div id="elementH"></div>
+    </div>
+
+<!-- jQuery library -->
+<script src="js/jquery.min.js"></script>
+<!-- jsPDF library -->
+<script src="js/jspdf.min.js"></script>
+<script>
+    function convert_HTML_To_PDF() {
+        var doc = new jsPDF({
+            orientation: 'portrait'
+        });
+        doc.setFont("courier");
+        doc.setFontType("normal");
+
+        var elementHTML = $('#PDFContent').html();
+        var specialElementHandlers = {
+            '#elementH': function (element, renderer) {
+                return true;
+            }
+        };
+        doc.fromHTML(elementHTML, 15, 15, {
+            'width': 170,
+            'elementHandlers': specialElementHandlers
+        });
+        
+        // Save the PDF
+        doc = addWaterMark(doc);
+        doc.save('sample-document.pdf');
+    }
+
+    function addWaterMark(doc) {
+        var totalPages = doc.internal.getNumberOfPages();
+        var imgData = getBase64Image('https://tofaliafrica.com/images/Logo.png');
+        for (i = 1; i <= totalPages; i++) {
+            doc.setPage(i);
+            doc.addImage(imgData, 'PNG', 40, 40, 75, 75);
+            //doc.setTextColor(150);
+            //doc.text(50, doc.internal.pageSize.height - 30, 'Watermark');
+        }
+
+        return doc;
+    }
+
+    const toDataURL = url => fetch(url,{
+        mode: 'no-cors'
+    })
+    .then(response => response.blob())
+    .then(blob => new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onloadend = () => resolve(reader.result)
+        reader.onerror = reject
+        reader.readAsDataURL(blob)
+    }))
+
+
+toDataURL('https://tofaliafrica.com/images/Logo.png')
+  .then(dataUrl => {
+    console.log('RESULT:', dataUrl)
+  })
+</script>
+</body>
+</html>

@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<!-- Mirrored from templateclan.com/demos/construction/about-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 May 2021 16:11:48 GMT -->
-<head>
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Materiasl Estimate | Tofali Africa</title>
+        <title>Materials Estimator | Tofali Africa</title>
         <link rel="icon" href="images/icon.png">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Neuton:400,200,300,400italic,700,800' rel='stylesheet' type='text/css'>
 
@@ -26,7 +24,6 @@
             <header class="header">
                 <nav class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
-                        <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
                                 <span class="sr-only">Toggle navigation</span>
@@ -34,19 +31,19 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="index.html"><img class="img-responsive top-logo" src="images/Logo.png" alt="" /></a>
+                            <a class="navbar-brand" href="index.html"><img src="images/Logo.png" class="img-responsive top-logo" alt="" /></a>
                         </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="main-navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <a href="index.html">Home</a>
                                 </li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Team</a></li>
-                                <li><a href="#">Portfolio</a></li>
-                                <li><a href="#">Contact Us</a></li>
+                                <li class="active"><a href="calculator.html">Calculator</a></li>
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="team.html">Team</a></li>
+                                <li><a href="portfolio.html">Portfolio</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
 
                             </ul>
                         </div>
@@ -80,13 +77,55 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<input type="button" id="get_total_button" onclick="getTotalValue()" class="btn btn-md btn-normal" value="Calculate Total">
-						<input type="button" id="get_catalogue_button" onclick="getCatalogue()" class="btn btn-md btn-normal" value="👈 Do Another">
-                        <input type="button" id="generate_pdf_button" onclick="generateEstimatePDF()" class="btn btn-md btn-normal" value="Send to self">
+						<button type="button" id="get_total_button" onclick="getTotalValue()" class="btn btn-normal">Calculate Total</button>
+						<button type="button" id="get_catalogue_button" onclick="getCatalogue()" class="btn btn-normal">👈 Do Another</button>
+                        <br />
+                        <button id="generate_pdf_button" type="button" class="btn btn-normal" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Send to Self</button>
 					</div>
                     <div class="col-md-1"></div>
 				</div>
             </section>
+            
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="success_msg">Send Tofali Estimate to Self</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="centered" id="form_loader">
+                            <img src="infinity-loader.svg" alt="">
+                        </div>
+                      <form id="send_estimate">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input id="firstname" required type="text" name="firstname" placeholder="First Name" class="form-control">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input id="lastname" required type="text" name="lastname" placeholder="Last Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input id="phone" required type="tel" name="tel" placeholder="Phonenumber" class="form-control">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input id="email" required type="email" name="email" placeholder="Email" class="form-control">
+                            </div>
+                        </div>
+                        <input id="html_data" value="random data" required type="hidden">
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button onclick="sendToSelf()" type="button" class="btn btn-normal">Send message</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             <!-- Page-Container-End -->
 
             <!-- Footer-Section -->
@@ -95,42 +134,37 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12 col-sm-4 col-md-4">
-                                <div class="footer-widget m-b-50">
+                                <div class="footer-widget">
                                     <img src="images/Logo.png" class="m-b-20" alt="" />
-                                    <p>Monotonectally recaptiualize end-to-end materials before B2C e-commerce.
-                                        Assertively initiate value-added infrastructures via functionalized users. 
-                                        Efficiently whiteboard ubiquitous best practices through adaptive paradigms.
-                                        Continually revolutionize.</p>
+                                    <p>Eco Concrete Ltd runs a business model of producing cement based materials (blocks, planters, pipes and pavers etc.) on construction sites. By deploying our industrial scale machines on construction sites, including the remotest places in Uganda, we reduce the cost of the materials we provide by about 30% and construction costs by up to 20%.</p>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 footer-address">
-                                <div class="footer-widget m-b-50">
+                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                <div class="footer-widget">
                                     <div class="title latest-project-title">
                                         <h3 class="widget-title">Get In Touch</h3><span></span>
                                     </div>
                                     <ul class="menu-links">
-                                        <li class="address">Address: 15 Design Street, Melbourne<br> Australia 54214</li>
-                                        <li>Phone: +1-541-754-3010</li>
-                                        <li>Email: <a href="#">info@construction.com</a></li>
+                                        <li class="address"><strong>ECO CONCRETE LIMITED</strong>
+                                            <br>
+                                            Plot. No. 39, Naguru drive;</li>
+                                        <li>P.O. Box 37, Ntinda - Kampala</li>
+                                        <li>Email: <a href="admin@ecoconcrete.co.ug">admin@ecoconcrete.co.ug</a></li>
                                     </ul>
 
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-4 col-md-4">
-                                <div class="footer-widget m-b-50">
+                                <div class="footer-widget">
                                     <div class="title latest-project-title">
-                                        <h3 class="widget-title">Newsletter</h3><span></span>
+                                        <h3 class="widget-title">Important Links</h3><span></span>
                                     </div>
-
-                                    <p>Signup your newsletter</p>
-                                    <form>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-sm btn-rounded btn-normal" type="submit">Submit</button>
-                                        </div>
-                                    </form>
+                                    <ul class="m-b-10">
+                                        <li><a href="about-us.html">About Us</a></li>
+                                        <li><a href="calculator.html">Material Calculator</a></li>
+                                        <li><a href="portfolio.html">Portfolio</a></li>
+                                        <li><a href="assets/Eco Concrete Ltd (About us).pdf">Company Profile</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +181,7 @@
                             <li><a href="contact.html">Contact Us</a></li>
 
                         </ul>   
-                        <p class="text-center">&copy; 2016 Templateclan Themes. All rights reserved.</p>
+                        <p class="text-center">&copy; 2020 Tofali. A platform for Eco Concrete Ltd. Clients.</p>
                     </div>
                 </div>
             </footer>
@@ -156,23 +190,8 @@
         <!-- Wrapper-End -->
 
         <!-- Script -->
-		<script src="material_calculator.js"></script>
+		<script src="material_calculator_v6.js"></script>
         <script src="js/all.min.js"></script>
-		<script>
-		// 	$(document).ready(function(){
-		//     $('.count').prop('disabled', true);
-   		// 	$(document).on('click','.plus',function(){
-		// 		$('.count').val(parseInt($('.count').val()) + 1 );
-    	// 	});
-        // 	$(document).on('click','.minus',function(){
-    	// 		$('.count').val(parseInt($('.count').val()) - 1 );
-    	// 			if ($('.count').val() == -1) {
-		// 				$('.count').val(0);
-		// 			}
-    	//     	});
- 		// });
-		</script>
+        <script src="send_to_self.js"></script>
     </body>
-
-<!-- Mirrored from templateclan.com/demos/construction/about-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 May 2021 16:12:01 GMT -->
 </html>
