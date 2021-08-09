@@ -5,6 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Materials Estimator | Tofali Africa</title>
+        <meta name="description" content="A simple, sustainable and empowering business model for producing concrete blocks, planters, pipes and pavers on construction sites.">
+        <meta name="keywords" content="Tofali, Tofali Africa, Eco Concrete, ECO CONCRETE LIMITED">
         <link rel="icon" href="images/icon.png">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Neuton:400,200,300,400italic,700,800' rel='stylesheet' type='text/css'>
 
@@ -16,7 +18,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body onload="getCatalogue()"">
+    <body onload="getCatalogue()">
         <!-- Wrapper-Start -->
         <div id="wrapper">
 
@@ -70,15 +72,20 @@
 				</div>
 			
 				<div class="row">
+                    <div class="row-padding">
+                        <h4 id="message"><strong>NB:</strong> Block machines can only be deployed for orders not less than 4,000. For less numbers visit <a href="contact.html">Contact Us</a> for further help.</h4>
+                        <h4 id="error-message"></h4>
+                    </div>
 					<div class="col-md-1"></div>
 					<div class="col-md-8">
+                        
 						<div id="material_form">
 						<div id="material_body"></div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<button type="button" id="get_total_button" onclick="getTotalValue()" class="btn btn-normal">Calculate Total</button>
-						<button type="button" id="get_catalogue_button" onclick="getCatalogue()" class="btn btn-normal">👈 Do Another</button>
+						<button type="button" id="get_catalogue_button" onclick="document.location.href='calculator.html'" class="btn btn-normal">👈 Do Another</button>
                         <br />
                         <button id="generate_pdf_button" type="button" class="btn btn-normal" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Send to Self</button>
 					</div>
@@ -190,7 +197,7 @@
         <!-- Wrapper-End -->
 
         <!-- Script -->
-		<script src="material_calculator_v6.js"></script>
+		<script src="material_calculator_v7.js"></script>
         <script src="js/all.min.js"></script>
         <script src="send_to_self.js"></script>
     </body>

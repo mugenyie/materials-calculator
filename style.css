@@ -6,7 +6,9 @@
     border: 1px solid #ddd;
     padding: 8px;
   }
-
+.row-padding{
+  padding: 0 10% 0 10% !important;
+}
   .materials-section{
     padding-right: 10px;
     padding-left: 10px;
